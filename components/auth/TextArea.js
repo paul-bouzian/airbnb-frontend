@@ -9,12 +9,13 @@ const TextArea = ({ placeholder, value, onChange }) => {
         value={value}
         onChangeText={onChange}
         multiline
-        numberOfLines={4}
+        numberOfLines={3}
         style={{
           borderBottomWidth: 2,
           borderBottomColor: "#FFBAC0",
           paddingBottom: 8,
           fontSize: 18,
+          textAlignVertical: "top",
         }}
       />
     </View>

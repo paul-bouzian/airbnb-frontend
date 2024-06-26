@@ -1,15 +1,15 @@
 import { Slot, router, useSegments } from "expo-router";
 import { useContext, useEffect } from "react";
-import { SafeAreaProvider } from "react-native-safe-area-context";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { UserContext, UserProvider } from "../context/UserContext";
 import "../global.css";
 
 export default function RootLayout() {
   return (
     <UserProvider>
-      <SafeAreaProvider>
+      <SafeAreaView style={{ flex: 1 }}>
         <SlotProvider />
-      </SafeAreaProvider>
+      </SafeAreaView>
     </UserProvider>
   );
 }

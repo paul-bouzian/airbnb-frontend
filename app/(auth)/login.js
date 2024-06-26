@@ -33,7 +33,7 @@ export default function LoginScreen() {
       className="flex-1"
       contentContainerStyle={{ padding: 14, alignItems: "center" }}
     >
-      <View className="items-center justify-center mt-24 gap-8 p-4">
+      <View className="items-center justify-center gap-8 p-4">
         <Image
           source={require("../../assets/img/airbnb-logo.png")}
           className="w-32 h-32"
