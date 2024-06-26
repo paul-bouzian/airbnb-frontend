@@ -1,10 +1,11 @@
 import { Link } from "expo-router";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Image, Text, View } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import AuthButton from "../../components/auth/Button";
 import AuthInput from "../../components/auth/Input";
 import TextArea from "../../components/auth/TextArea";
+import { UserContext } from "../../context/UserContext";
 import "../../global.css";
 import checkForm from "../../lib/auth/Signup/checkForm";
 import fetchSignup from "../../lib/auth/Signup/fetchSignup";
@@ -17,6 +18,7 @@ export default function SignupScreen() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [credentialsError, setCredentialsError] = useState("");
   const [loading, setLoading] = useState(false);
+  const { saveUser } = useContext(UserContext);
 
   const handleSignup = async () => {
     setLoading(true);
@@ -41,8 +43,8 @@ export default function SignupScreen() {
       password,
       setCredentialsError
     );
-    if (response === 201) {
-      alert("Account created");
+    if (response) {
+      await saveUser(response);
     }
     setLoading(false);
   };

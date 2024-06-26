@@ -10,12 +10,6 @@ const HomeScreen = () => {
     <View>
       <Text>Bienvenue à la maison!</Text>
       <Button
-        title="Create"
-        onPress={() => {
-          saveUser({ name: "John", email: "john@doe.com" });
-        }}
-      />
-      <Button
         title="Log"
         onPress={() => {
           alert(JSON.stringify(user));
