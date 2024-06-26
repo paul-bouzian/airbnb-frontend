@@ -1,28 +1,46 @@
-import { Button, Text, View } from "react-native";
-
-import { useContext } from "react";
-import { UserContext } from "../../context/UserContext";
+import { useEffect, useState } from "react";
+import { ActivityIndicator, FlatList } from "react-native";
+import Room from "../../components/app/Home/Room";
+import fetchRooms from "../../lib/app/fetchRooms";
 
 const HomeScreen = () => {
-  const { user, saveUser, deleteUser } = useContext(UserContext);
+  const [loading, setLoading] = useState(true);
+  const [rooms, setRooms] = useState([]);
+
+  useEffect(() => {
+    const loadRooms = async () => {
+      setLoading(true);
+      const response = await fetchRooms();
+      setRooms(response.data);
+      setLoading(false);
+    };
+    loadRooms();
+  }, []);
+
+  if (loading) {
+    return <ActivityIndicator size="large" className="mt-16" />;
+  }
 
   return (
-    <View>
-      <Text>Bienvenue à la maison!</Text>
-      <Button
-        title="Log"
-        onPress={() => {
-          alert(JSON.stringify(user));
-        }}
-      />
-      <Button
-        title="Logout"
-        onPress={() => {
-          deleteUser();
-        }}
-      />
-      {user && <Text>{user.name}</Text>}
-    </View>
+    <FlatList
+      data={rooms}
+      renderItem={({ item }) => (
+        <Room
+          picture={item.photos.length > 0 ? item.photos[0].url : ""}
+          price={item.price}
+          title={item.title}
+          rating={item.ratingValue}
+          reviews={item.reviews}
+          profilePicture={item.user.account.photo.url}
+        />
+      )}
+      keyExtractor={(item) => item.id}
+      className="p-6 bg-white"
+      contentContainerStyle={{
+        gap: 20,
+        paddingBottom: 20,
+      }}
+    />
   );
 };
 

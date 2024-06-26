@@ -1,9 +1,10 @@
 import { Link } from "expo-router";
 import { useContext, useState } from "react";
-import { Image, Text, View } from "react-native";
+import { Text, View } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import AuthButton from "../../components/auth/Button";
 import AuthInput from "../../components/auth/Input";
+import Logo from "../../components/ui/Logo";
 import { UserContext } from "../../context/UserContext";
 import "../../global.css";
 import checkForm from "../../lib/auth/Login/checkForm";
@@ -36,11 +37,7 @@ export default function LoginScreen() {
       contentContainerStyle={{ padding: 14, alignItems: "center" }}
     >
       <View className="items-center justify-center gap-8 p-4">
-        <Image
-          source={require("../../assets/img/airbnb-logo.png")}
-          className="w-32 h-32"
-          resizeMode="contain"
-        />
+        <Logo className="w-32 h-32" />
         <Text className="text-3xl font-semibold text-gray-500">Sign in</Text>
       </View>
       <View className="items-center justify-center mt-12 gap-12 p-4 w-full">
