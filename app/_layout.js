@@ -23,7 +23,7 @@ const SlotProvider = () => {
       router.replace("/login");
     }
     if (user && !location.includes("(app)")) {
-      router.replace("/profile");
+      router.replace("/");
     }
   }, [user, location]);
 

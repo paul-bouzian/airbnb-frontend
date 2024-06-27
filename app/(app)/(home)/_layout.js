@@ -10,6 +10,7 @@ export default function HomeStackScreen() {
         },
         headerBackTitleVisible: false,
         headerTintColor: "grey",
+        headerTitleAlign: "center",
       }}
     >
       <Stack.Screen name="index" />
