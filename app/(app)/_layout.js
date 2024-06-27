@@ -1,54 +1,36 @@
-import { Feather, FontAwesome5, FontAwesome6 } from "@expo/vector-icons";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import HeaderLogo from "../../components/app/HeaderLogo";
-import HomeStackScreen from "./(home)/HomeStack";
-import AroundScreen from "./around";
-import ProfileScreen from "./profile";
-
-const Tab = createBottomTabNavigator();
+import { Entypo, Feather, FontAwesome5 } from "@expo/vector-icons";
+import { Tabs } from "expo-router";
 
 export default Layout = () => {
   return (
-    <Tab.Navigator
-      screenOptions={{
-        tabBarStyle: {
-          paddingTop: 5,
-          paddingBottom: 5,
-          height: 60,
-        },
-      }}
-    >
-      <Tab.Screen
-        name="HomeStack"
-        component={HomeStackScreen}
+    <Tabs screenOptions={{ headerShown: false }}>
+      <Tabs.Screen
+        name="(home)"
         options={{
-          headerShown: false,
           tabBarIcon: ({ color, size }) => (
             <FontAwesome5 name="home" size={size} color={color} />
           ),
+          title: "Home",
         }}
       />
-      <Tab.Screen
-        name="Around me"
-        component={AroundScreen}
+      <Tabs.Screen
+        name="around"
         options={{
-          header: () => <HeaderLogo />,
           tabBarIcon: ({ color, size }) => (
-            <FontAwesome6 name="location-dot" size={size} color={color} />
+            <Entypo name="location-pin" size={size} color={color} />
           ),
+          title: "Around me",
         }}
       />
-
-      <Tab.Screen
-        name="Profile"
-        component={ProfileScreen}
+      <Tabs.Screen
+        name="profile"
         options={{
-          header: () => <HeaderLogo />,
           tabBarIcon: ({ color, size }) => (
             <Feather name="user" size={size} color={color} />
           ),
+          title: "My profile",
         }}
       />
-    </Tab.Navigator>
+    </Tabs>
   );
 };

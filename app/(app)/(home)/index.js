@@ -1,3 +1,4 @@
+import { router } from "expo-router";
 import { useEffect, useState } from "react";
 import { ActivityIndicator, FlatList, Pressable } from "react-native";
 import Room from "../../../components/app/Home/Room";
@@ -27,7 +28,10 @@ const HomeScreen = ({ navigation }) => {
       renderItem={({ item }) => (
         <Pressable
           onPress={() => {
-            navigation.navigate("DetailsRoom", { id: item._id });
+            router.push({
+              pathname: "/details",
+              params: { id: item._id },
+            });
           }}
         >
           <Room

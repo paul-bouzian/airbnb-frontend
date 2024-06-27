@@ -19,7 +19,6 @@ const SlotProvider = () => {
   const location = useSegments();
 
   useEffect(() => {
-    console.log("the new location is ", location);
     if (!user && !location.includes("(auth)")) {
       router.replace("/login");
     }

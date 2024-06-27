@@ -1,10 +1,11 @@
+import { useLocalSearchParams } from "expo-router";
 import { useEffect, useState } from "react";
 import { ActivityIndicator, View } from "react-native";
 import Room from "../../../components/app/Home/Room";
 import fetchRoom from "../../../lib/app/home/fetchRoom";
 
-const DetailsRoomScreen = ({ route, navigation }) => {
-  const { id } = route.params;
+const DetailsRoomScreen = () => {
+  const { id } = useLocalSearchParams();
   const [room, setRoom] = useState(null);
   const [loading, setLoading] = useState(true);
 
