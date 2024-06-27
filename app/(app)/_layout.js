@@ -1,15 +1,23 @@
 import { Entypo, Feather, FontAwesome5 } from "@expo/vector-icons";
 import { Tabs } from "expo-router";
+import HeaderLogo from "../../components/app/HeaderLogo";
 
 export default Layout = () => {
   return (
-    <Tabs screenOptions={{ headerShown: false }}>
+    <Tabs
+      screenOptions={{
+        headerTitle: () => {
+          return <HeaderLogo />;
+        },
+      }}
+    >
       <Tabs.Screen
         name="(home)"
         options={{
           tabBarIcon: ({ color, size }) => (
             <FontAwesome5 name="home" size={size} color={color} />
           ),
+          headerShown: false,
           title: "Home",
         }}
       />
