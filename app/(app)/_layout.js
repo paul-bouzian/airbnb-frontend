@@ -1,7 +1,7 @@
 import { Feather, FontAwesome5, FontAwesome6 } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import HomeScreen from ".";
 import HeaderLogo from "../../components/app/HeaderLogo";
+import HomeStackScreen from "./(home)/HomeStack";
 import AroundScreen from "./around";
 import ProfileScreen from "./profile";
 
@@ -19,10 +19,10 @@ export default Layout = () => {
       }}
     >
       <Tab.Screen
-        name="Home"
-        component={HomeScreen}
+        name="HomeStack"
+        component={HomeStackScreen}
         options={{
-          header: () => <HeaderLogo />,
+          headerShown: false,
           tabBarIcon: ({ color, size }) => (
             <FontAwesome5 name="home" size={size} color={color} />
           ),
@@ -38,8 +38,9 @@ export default Layout = () => {
           ),
         }}
       />
+
       <Tab.Screen
-        name="My profile"
+        name="Profile"
         component={ProfileScreen}
         options={{
           header: () => <HeaderLogo />,

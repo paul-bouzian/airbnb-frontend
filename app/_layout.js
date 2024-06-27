@@ -19,15 +19,12 @@ const SlotProvider = () => {
   const location = useSegments();
 
   useEffect(() => {
+    console.log("the new location is ", location);
     if (!user && !location.includes("(auth)")) {
-      console.log("user is not logged in");
-      console.log("slotprovider > location : ", location);
-      console.log("-----------------");
       router.replace("/login");
     }
     if (user && !location.includes("(app)")) {
-      console.log("user is logged in");
-      router.replace("/");
+      router.replace("/profile");
     }
   }, [user, location]);
 
